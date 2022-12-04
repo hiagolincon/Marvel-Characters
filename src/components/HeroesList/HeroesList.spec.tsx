@@ -1,11 +1,9 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 
-
-import { HeroesList } from 'src/components/HeroesList/HeroesList'
+import { HeroesList } from 'src/components/HeroesList/HeroesList';
 import api from 'src/services/api';
 import '@testing-library/jest-dom/extend-expect';
-
 
 import MockAdapter from 'axios-mock-adapter';
 
@@ -30,7 +28,7 @@ describe('Hero Component', () => {
     const response = await api.get(`/characters?limit=10&offset=0`);
     expect(response.data).toEqual(listCharacters);
   });
-  
+
   it('should be render Hero', () => {
     const { queryByTestId } = render(<HeroesList />);
     const hero = queryByTestId('hero');
