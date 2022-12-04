@@ -26,7 +26,8 @@ interface HeroImp {
 
 export const HeroesList = () => {
   const [heroes, setHeroes] = useState<HeroImp[]>([]);
-  const { searchValue, setPagination, offset, isLoading, setIsLoading } = useList();
+  const { searchValue, setPagination, offset, isLoading } = useList();
+  const [loading, setLoading] = useState(isLoading);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,14 +39,14 @@ export const HeroesList = () => {
       const totalPages = Math.ceil(calculationTotalPages);
       setHeroes(results);
       setPagination({ count, totalItems: total, totalPages });
-      setIsLoading(false);
+      setLoading(false);
     };
     getHeroes();
   }, []);
 
   useEffect(() => {
     const handleListSearch = async () => {
-      setIsLoading(true);
+      setLoading(true);
 
       if (searchValue) {
         const response = await api.get(`/characters?limit=100&offset=${offset}&nameStartsWith=${searchValue}`);
@@ -58,12 +59,12 @@ export const HeroesList = () => {
         const { results } = response.data.data;
         setHeroes(results);
       }
-      setIsLoading(false);
+      setLoading(false);
     };
     handleListSearch();
   }, [navigate, offset, searchValue]);
 
-  if (isLoading) {
+  if (loading) {
     return <Loading />;
   }
   return (

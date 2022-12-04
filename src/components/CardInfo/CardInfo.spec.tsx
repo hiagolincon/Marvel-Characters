@@ -1,7 +1,6 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 
-import { CardInfo } from 'src/components/CardInfo/CardInfo'
+import { CardInfo } from 'src/components/CardInfo/CardInfo';
 
 describe('CardInfo', () => {
   it('should be able to render CardInfo', () => {

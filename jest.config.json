@@ -1,6 +1,7 @@
 {
   "testEnvironment": "jsdom",
   "moduleNameMapper": {
+    "\\.svg": "<rootDir>/__mocks__/svgMock.js",
     "src/(.*)": "<rootDir>/src/$1",
     "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/src/setupTests.ts",
     "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy"
